@@ -119,6 +119,7 @@ http {
 
   <% if canonical_host %>
   server {
+    listen <%= port %> default_server;
     server_name _;
     
     <% if https_only %>
