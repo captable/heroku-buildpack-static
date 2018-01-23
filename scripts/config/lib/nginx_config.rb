@@ -45,8 +45,7 @@ class NginxConfig
 
     json["clean_urls"] ||= DEFAULT[:clean_urls]
     json["https_only"] ||= DEFAULT[:https_only]
-    json["canonical_host"] ||= DEFAULT[:canonical_host]
-    
+    json["canonical_host"] = json["canonical_host"] ? NginxConfigUtil.interpolate(json["canonical_host"], ENV) : DEFAULT[:canonical_host]    
 
     json["routes"] ||= {}
     json["routes"] = NginxConfigUtil.parse_routes(json["routes"])
